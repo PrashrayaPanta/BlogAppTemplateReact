@@ -1,3 +1,4 @@
+import { Button } from "./ui/button";
 const Header = () => {
   return (
     <div className="flex p-4 justify-between items-center bg-black text-white h-20">
@@ -94,7 +95,7 @@ const Header = () => {
         </a>
 
         <a href="">Test</a>
-        <button className="bg-blue-500 px-8 py-2">Hello</button>
+        <Button className="bg-blue-500 px-8 py-2">Hello</Button>
       </div>
 
       {/* <!-- Hamberg Icon --> */}
