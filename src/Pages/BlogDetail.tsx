@@ -16,15 +16,11 @@ const BlogDetail = () => {
           {/* Post Gallery */}
           <div className="relative flex flex-col md:flex-row gap-4 mb-6">
             {/* Carousel Div */}
-            <div className="flex-1 order-1 md:order-2">
+            <div className="flex-1 order-1 md:order-2 -z-3">
               {/* Carousel Part */}
               <Carousel
                 // ref={carouselRef}
                 className="w-full"
-                // opts={{ startIndex: selectedIndex, loop: true }}
-                // onSelect={(carousel) =>
-                //   setSelectedIndex(carousel.selectedScrollSnap())
-                // }
               >
                 <CarouselContent>
                   <CarouselItem>
