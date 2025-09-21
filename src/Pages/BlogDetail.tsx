@@ -16,15 +16,15 @@ const BlogDetail = () => {
           {/* Post Gallery */}
           <div className="relative flex flex-col md:flex-row gap-4 mb-6">
             {/* Carousel Div */}
-            <div className="flex-1 order-1 md:order-2 -z-3">
+            <div className="flex-1 order-1 md:order-2  bg-red-500 ">
               {/* Carousel Part */}
               <Carousel
-                // ref={carouselRef}
-                className="w-full"
+              // ref={carouselRef}
+              // className="w-full"
               >
                 <CarouselContent>
                   <CarouselItem>
-                    <div className="relative max-h-[460px] aspect-square border-0 overflow-hidden">
+                    <div className=" max-h-[460px] aspect-square border-0 overflow-hidden">
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
                         alt=""
@@ -79,7 +79,7 @@ const BlogDetail = () => {
             </div>
 
             {/* Scroll area Thumbnail Part */}
-            <ScrollArea className="order-2 md:order-1 w-full md:w-24 h-24 md:h-[460px] bg-red-500">
+            <ScrollArea className="order-2 md:order-1 w-full md:w-24 h-24 md:h-[460px]">
               <div className="flex md:flex-col gap-2 p-1">
                 <button
                   className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
@@ -194,7 +194,7 @@ const BlogDetail = () => {
           </div>
         </div>
 
-        <div className="text-black bg-red-400 my-auto px-4">
+        <div className="text-black  my-auto px-4">
           The Transparent RGB Wireless Gaming Controller is the perfect blend of
           aesthetics and functionality for gamers of all levels. Featuring a
           sleek transparent design, this controller not only looks great but
