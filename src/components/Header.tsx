@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex p-4 justify-between items-center bg-black text-white h-20">
+    <div className="flex p-4 justify-between items-center  text-white h-20 bg-black">
       {/* <!-- logo Icon --> */}
       <div>Logo</div>
 
@@ -65,8 +65,11 @@ const Header = () => {
           </div>
         </div>
 
-        <a href="">Login</a>
-        <a href="">Register</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/categories">Category</a>
+
+        <a href="/posts">Post</a>
         <a href="">Text</a>
 
         <a href="" className="flex items-center group">
@@ -210,6 +213,10 @@ const Header = () => {
             </a>
             <a href="/register" className="flex flex-col pb-2">
               Register
+            </a>
+
+            <a href="/post" className="flex flex-col pb-2">
+              Post
             </a>
           </div>
         </div>

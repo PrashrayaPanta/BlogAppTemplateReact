@@ -6,9 +6,31 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import type { EmblaCarouselType } from "embla-carousel";
+
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { useState } from "react";
 
 const BlogDetail = () => {
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isZoomed) {
+      const { left, top, width, height } =
+        e.currentTarget.getBoundingClientRect();
+      const x = (e.clientX - left) / width;
+      const y = (e.clientY - top) / height;
+      setMousePosition({ x, y });
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col md:grid grid-cols-2 max-w-6xl mx-auto">
@@ -18,17 +40,30 @@ const BlogDetail = () => {
             {/* Carousel Div */}
             <div className="flex-1 order-1 md:order-2  bg-red-500 ">
               {/* Carousel Part */}
-              <Carousel
-              // ref={carouselRef}
-              // className="w-full"
-              >
+              <Carousel>
                 <CarouselContent>
                   <CarouselItem>
-                    <div className=" max-h-[460px] aspect-square border-0 overflow-hidden">
+                    <div
+                      className="max-h-[460px] aspect-square border-0 overflow-hidden"
+                      onMouseEnter={() => setIsZoomed(true)}
+                      onMouseLeave={() => setIsZoomed(false)}
+                      onMouseMove={handleMouseMove}
+                    >
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
                         alt=""
-                        className="w-full h-full object-cover rounded-lg transition-transform duration-200"
+                        className={`w-full h-full object-cover rounded-lg transition-transform duration-200 ${
+                          isZoomed && "scale-175"
+                        }`}
+                        style={
+                          isZoomed
+                            ? {
+                                transformOrigin: `${mousePosition.x * 100}% ${
+                                  mousePosition.y * 100
+                                }%`,
+                              }
+                            : {}
+                        }
                       />
                     </div>
                   </CarouselItem>
