@@ -18,11 +18,18 @@ const { label, type, btnSvgIcon, color }: ButtonType = {
   color: "bg-black",
 };
 
+import * as Yup from "yup";
+
+export const CatgeoryValidationSchema = Yup.object({
+  name: Yup.string().required("Email is required"),
+});
+
 import { initialValues } from "./List";
 
 const Create = () => {
   const formik = useFormik({
     initialValues,
+    validationSchema: CatgeoryValidationSchema,
     onSubmit: (values) => {
       console.log(values);
     },

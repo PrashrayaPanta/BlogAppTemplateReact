@@ -43,7 +43,6 @@ const Form = ({
 
   console.log(btnType);
 
-  console.log("I am isnide the form");
   console.log(UITextAreaArray);
 
   return (

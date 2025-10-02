@@ -39,10 +39,36 @@ const FileUploadField = ({
       </div>
       <input
         type="file"
-        className="w-full h-8 border-1 focus:outline-none focus:border-amber-300 px-2 rounded-sm"
-        onBlur={formik?.handleBlur}
+        className={`w-full h-8 border-1 focus:outline-none focus:border-amber-300 px-2 rounded-sm ${
+          formik.errors.images && formik.touched.images
+            ? "border-red-500"
+            : null
+        }`}
+        onChange={({ target }) =>
+          formik.setFieldValue("images", Array.from(target.files))
+        }
+        multiple
+        accept="image/*"
+        onBlur={formik.handleBlur}
         name={name}
       />
+      {formik.errors.images && formik.touched.images ? (
+        <div className="text-red-500">{formik.errors.images}</div>
+      ) : null}
+
+      {formik.values.images.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-3">
+          {formik.values.images?.map((file, i) => (
+            <div key={i} className="w-full">
+              <img
+                src={URL.createObjectURL(file)}
+                alt={`preview-${i}`}
+                className="w-full h-32 object-cover rounded-md shadow"
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

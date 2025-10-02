@@ -19,10 +19,12 @@ const { type, label, btnSvgIcon, color } = {
 };
 
 import { initialValues } from "./List";
+import { CatgeoryValidationSchema } from "./Create";
 
 const Edit = () => {
   const formik = useFormik({
     initialValues,
+    validationSchema: CatgeoryValidationSchema,
     onSubmit: (values, { setSubmitting }) => {
       console.log(values);
     },
