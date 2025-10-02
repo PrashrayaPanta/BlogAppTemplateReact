@@ -1,6 +1,7 @@
 import type { FieldType } from "../../../interfaces/FieldType";
 import { useFormik } from "formik";
 import Form from "../../../components/Form";
+import type { ButtonType } from "../../../interfaces/ButtonType";
 const CategoryUITextFieldArray: FieldType[] = [
   {
     label: "Category Name",
@@ -11,9 +12,8 @@ const CategoryUITextFieldArray: FieldType[] = [
 ];
 
 // Button
-const { label, type, btnSvgIcon, color } = {
+const { label, type, btnSvgIcon, color }: ButtonType = {
   label: "Submit",
-  type: "small-width",
   btnSvgIcon: "fa fa-paper-plane",
   color: "bg-black",
 };

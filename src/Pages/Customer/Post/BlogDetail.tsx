@@ -34,6 +34,7 @@ const BlogDetail = () => {
   };
 
   const handleClickThumbnail = (index: number) => {
+    setSelectedIndex(index);
     api?.scrollTo(index);
   };
 
@@ -44,7 +45,7 @@ const BlogDetail = () => {
           {/* Post Gallery */}
           <div className="relative flex flex-col md:flex-row gap-4 mb-6">
             {/* Carousel Div */}
-            <div className="flex-1 order-1 md:order-2  bg-red-500 ">
+            <div className="flex-1 order-1 md:order-2">
               {/* Carousel Part */}
               <Carousel
                 setApi={setApi}
@@ -145,22 +146,12 @@ const BlogDetail = () => {
 
                 <button
                   key={1}
-                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
-
                   onClick={() => handleClickThumbnail(1)}
                   className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
                     selectedIndex === 1
                       ? "border-primary"
                       : "border-transparent hover:border-primary/50"
                   } border-2`}
-
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
                 >
                   <img
                     src="https://www.shutterstock.com/image-vector/node-js-framework-web-development-260nw-1740811286.jpg"
@@ -179,14 +170,6 @@ const BlogDetail = () => {
                       ? "border-primary"
                       : "border-transparent hover:border-primary/50"
                   } border-2`}
-
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
                 >
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
@@ -205,14 +188,6 @@ const BlogDetail = () => {
                       ? "border-primary"
                       : "border-transparent hover:border-primary/50"
                   } border-2`}
-
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
                 >
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
@@ -231,14 +206,6 @@ const BlogDetail = () => {
                       ? "border-primary"
                       : "border-transparent hover:border-primary/50"
                   } border-2`}
-
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
                 >
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
@@ -249,22 +216,12 @@ const BlogDetail = () => {
 
                 <button
                   key={5}
-                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
-
                   onClick={() => handleClickThumbnail(5)}
                   className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
                     selectedIndex === 5
                       ? "border-primary"
                       : "border-transparent hover:border-primary/50"
                   } border-2`}
-
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
                 >
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"

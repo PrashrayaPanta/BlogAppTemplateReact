@@ -17,7 +17,7 @@ const Form = ({
   title,
   UITextArray,
   btnLabel,
-  btnType,
+  btnType = "Hello",
   btnSvgIcon,
   color,
   UITextAreaArray,
@@ -50,7 +50,7 @@ const Form = ({
     <>
       <form
         onSubmit={formik.handleSubmit}
-        className={`space-y-5 shadow-2xl rounded-sm py-4 mx-4   px-4  ${
+        className={`space-y-5 shadow-2xl rounded-sm py-4 mx-4    px-4  ${
           type === "HorizontalFormCenter" && "px-2 mx-auto max-w-sm"
         } `}
       >

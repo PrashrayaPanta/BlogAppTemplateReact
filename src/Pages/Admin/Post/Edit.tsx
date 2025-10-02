@@ -1,21 +1,21 @@
 import Form from "@/components/Form";
 import type { FieldType } from "@/interfaces/FieldType";
+import type { ButtonType } from "@/interfaces/ButtonType";
 import { useFormik } from "formik";
 
-const CategoryUIArray: FieldType[] = [
+const PostUIArray: FieldType[] = [
   {
-    label: "Category Name",
+    label: "Name",
     isCompulsory: "Compulsory",
     type: "text",
     name: "name",
   },
 ];
 
-const { type, label, btnSvgIcon, color } = {
-  type: "full-width",
+const { type, label, btnSvgIcon, color }: ButtonType = {
   label: "Submit",
   btnSvgIcon: "fa fa-paper-plane",
-  color: "bg-red-500",
+  color: "bg-black",
 };
 
 const Edit = () => {
@@ -32,9 +32,9 @@ const Edit = () => {
     <>
       {/* <!-- Login Form --> */}
       <Form
-        title="Edit Category"
+        title="Edit Post"
         formik={formik}
-        UITextArray={CategoryUIArray}
+        UITextArray={PostUIArray}
         btnType={type}
         btnLabel={label}
         btnSvgIcon={btnSvgIcon}
