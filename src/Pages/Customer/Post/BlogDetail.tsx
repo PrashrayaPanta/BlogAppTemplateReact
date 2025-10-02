@@ -6,15 +6,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import type { EmblaCarouselType } from "embla-carousel";
+import { type CarouselApi } from "@/components/ui/carousel";
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useState } from "react";
 
 const BlogDetail = () => {
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
 
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -31,6 +33,10 @@ const BlogDetail = () => {
     }
   };
 
+  const handleClickThumbnail = (index: number) => {
+    api?.scrollTo(index);
+  };
+
   return (
     <>
       <div className="flex flex-col md:grid grid-cols-2 max-w-6xl mx-auto">
@@ -40,7 +46,10 @@ const BlogDetail = () => {
             {/* Carousel Div */}
             <div className="flex-1 order-1 md:order-2  bg-red-500 ">
               {/* Carousel Part */}
-              <Carousel>
+              <Carousel
+                setApi={setApi}
+                opts={{ startIndex: selectedIndex, loop: true }}
+              >
                 <CarouselContent>
                   <CarouselItem>
                     <div
@@ -71,7 +80,7 @@ const BlogDetail = () => {
                   <CarouselItem>
                     <div className="relative max-h-[460px] aspect-square border-0 overflow-hidden">
                       <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
+                        src="https://www.shutterstock.com/image-vector/node-js-framework-web-development-260nw-1740811286.jpg"
                         alt=""
                         className="w-full h-full object-cover rounded-lg transition-transform duration-200"
                       />
@@ -117,7 +126,59 @@ const BlogDetail = () => {
             <ScrollArea className="order-2 md:order-1 w-full md:w-24 h-24 md:h-[460px]">
               <div className="flex md:flex-col gap-2 p-1">
                 <button
-                  className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+                  key={0}
+                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+
+                  onClick={() => handleClickThumbnail(0)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
+                    selectedIndex === 0
+                      ? "border-primary"
+                      : "border-transparent hover:border-primary/50"
+                  } border-2`}
+                >
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+
+                <button
+                  key={1}
+                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+
+                  onClick={() => handleClickThumbnail(1)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
+                    selectedIndex === 1
+                      ? "border-primary"
+                      : "border-transparent hover:border-primary/50"
+                  } border-2`}
+
+                  // onClick={() => setSelectedIndex(index)}
+                  // className={cn(
+                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
+                  //   selectedIndex === index
+                  //     ? "border-primary"
+                  //     : "border-transparent hover:border-primary/50"
+                  // )}
+                >
+                  <img
+                    src="https://www.shutterstock.com/image-vector/node-js-framework-web-development-260nw-1740811286.jpg"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+
+                <button
+                  key={2}
+                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+
+                  onClick={() => handleClickThumbnail(2)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
+                    selectedIndex === 2
+                      ? "border-primary"
+                      : "border-transparent hover:border-primary/50"
+                  } border-2`}
 
                   // onClick={() => setSelectedIndex(index)}
                   // className={cn(
@@ -135,7 +196,15 @@ const BlogDetail = () => {
                 </button>
 
                 <button
-                  className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+                  key={3}
+                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+
+                  onClick={() => handleClickThumbnail(3)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
+                    selectedIndex === 3
+                      ? "border-primary"
+                      : "border-transparent hover:border-primary/50"
+                  } border-2`}
 
                   // onClick={() => setSelectedIndex(index)}
                   // className={cn(
@@ -153,7 +222,15 @@ const BlogDetail = () => {
                 </button>
 
                 <button
-                  className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+                  key={4}
+                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+
+                  onClick={() => handleClickThumbnail(4)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
+                    selectedIndex === 4
+                      ? "border-primary"
+                      : "border-transparent hover:border-primary/50"
+                  } border-2`}
 
                   // onClick={() => setSelectedIndex(index)}
                   // className={cn(
@@ -171,43 +248,15 @@ const BlogDetail = () => {
                 </button>
 
                 <button
-                  className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+                  key={5}
+                  // className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
 
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
-                >
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-
-                <button
-                  className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
-
-                  // onClick={() => setSelectedIndex(index)}
-                  // className={cn(
-                  //   "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2",
-                  //   selectedIndex === index
-                  //     ? "border-primary"
-                  //     : "border-transparent hover:border-primary/50"
-                  // )}
-                >
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s"
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-
-                <button
-                  className="relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2"
+                  onClick={() => handleClickThumbnail(5)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden ${
+                    selectedIndex === 5
+                      ? "border-primary"
+                      : "border-transparent hover:border-primary/50"
+                  } border-2`}
 
                   // onClick={() => setSelectedIndex(index)}
                   // className={cn(
