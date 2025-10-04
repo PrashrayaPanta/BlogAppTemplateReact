@@ -2,12 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
 import BlogDetail from "./Pages/Customer/Post/BlogDetail";
-import Register from "./Pages/auth/Register";
-import Login from "./Pages/auth/Login";
 
 import CategoriesProduct from "./Pages/Customer/Categories/CategoriesProduct";
 
-import * as Pages from "./pages";
+import * as Pages from "./Pages";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
@@ -19,6 +18,12 @@ function App() {
             <Route path="/blogs/:slug" element={<BlogDetail />} />
             <Route path="/register" element={<Pages.Auth.Register />} />
             <Route path="/login" element={<Pages.Auth.Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile/edit" element={<Pages.Profile.Edit />} />
+            <Route
+              path="/profile/change-password"
+              element={<Pages.Profile.ChangePassword />}
+            />
             <Route path="/categories/:id" element={<CategoriesProduct />} />
             {/* Admin */}
             {/* Categories */}

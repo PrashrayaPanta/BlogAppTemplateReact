@@ -46,16 +46,16 @@ const TextFieldWithLabel = ({
           type={type}
           onChange={formik?.handleChange}
           onBlur={formik?.handleBlur}
-          value={formik?.values.name}
+          value={formik?.values[name]}
           name={name}
           className={`w-full h-8 border-1 focus:outline-none px-2 rounded-sm ${
-            formik.errors.name && formik.touched.name
+            formik.errors[name] && formik.touched[name]
               ? "border-red-500"
               : "border-gray-300"
           }`}
         />
-        {formik.errors.name && formik.touched.name ? (
-          <div className="text-red-500">{formik.errors.name}</div>
+        {formik.errors[name] && formik.touched[name] ? (
+          <div className="text-red-500">{formik.errors[name]}</div>
         ) : null}
       </div>
     </>

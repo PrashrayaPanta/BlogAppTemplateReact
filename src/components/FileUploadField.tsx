@@ -56,7 +56,7 @@ const FileUploadField = ({
         <div className="text-red-500">{formik.errors.images}</div>
       ) : null}
 
-      {formik.values.images.length > 0 && (
+      {formik.values?.images?.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-3">
           {formik.values.images?.map((file, i) => (
             <div key={i} className="w-full">

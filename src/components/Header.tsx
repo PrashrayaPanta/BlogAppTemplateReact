@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const user = useSelector((state) => state.user.value);
+
   const [openCover, setOpenCover] = useState(false);
 
   const [openBlogList, setOpenBlogList] = useState(false);
@@ -65,7 +68,12 @@ const Header = () => {
           </div>
         </div>
 
-        <a href="/login">Login</a>
+        {user ? (
+          <a href="/dashboard">{user?.username}</a>
+        ) : (
+          <a href="/login">Login</a>
+        )}
+
         <a href="/register">Register</a>
         <a href="/categories">Category</a>
 
@@ -208,9 +216,16 @@ const Header = () => {
               </div>
             )}
 
-            <a href="/login" className="flex flex-col pb-2">
-              Login
-            </a>
+            {user ? (
+              <a href="/login" className="flex flex-col pb-2">
+                {user.username}
+              </a>
+            ) : (
+              <a href="/login" className="flex flex-col pb-2">
+                Loginjkdfnjk
+              </a>
+            )}
+
             <a href="/register" className="flex flex-col pb-2">
               Register
             </a>

@@ -1,12 +1,20 @@
 import { useFormik } from "formik";
 
-import type { FormikProps } from "formik";
 import Form from "../../components/Form";
 import * as Yup from "yup";
 
 import type { FieldType } from "../../interfaces/FieldType";
 
 import { http } from "../../http";
+
+import { jwtDecode } from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store";
+import { useNavigate } from "react-router-dom";
+
+interface userinfo {
+  user: string;
+}
 
 const loginUIArray: FieldType[] = [
   {
@@ -23,11 +31,6 @@ const loginUIArray: FieldType[] = [
     name: "password",
   },
 ];
-
-export interface LoginFormValues {
-  email: string;
-  password: string;
-}
 
 export interface ButtonType {
   type?: string;
@@ -52,23 +55,36 @@ const LoginValidationSchema = Yup.object({
 });
 
 const Login = () => {
-  const formik: FormikProps<LoginFormValues> = useFormik<LoginFormValues>({
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: LoginValidationSchema,
     onSubmit: (values, { setSubmitting }) => {
+      console.log("Form is submiited");
+
       console.log(values);
 
       const Login = async () => {
         try {
-          await http.post("/users/login", values);
+          const { data } = await http.post("/users/login", values, {
+            withCredentials: true,
+          });
+          console.log(data.token);
+          const { user } = jwtDecode(data.token);
+
+          console.log("This is userInfo which is in decoded from token", user);
+          localStorage.setItem("userInfo", JSON.stringify(user));
+          dispatch(setUser(user));
+          navigate("/dashboard");
         } catch ({ response }) {
-          // console.log(error);
-          formik.setFieldError("email", response?.data?.message);
+          formik.setFieldError("email", response?.data.message);
         } finally {
           setSubmitting(false);
+          formik.resetForm();
         }
       };
 

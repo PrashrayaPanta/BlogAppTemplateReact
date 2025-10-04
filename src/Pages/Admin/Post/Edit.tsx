@@ -3,6 +3,7 @@ import type { FieldType } from "@/interfaces/FieldType";
 import type { ButtonType } from "@/interfaces/ButtonType";
 import { useFormik } from "formik";
 
+import * as Yup from "yup";
 const PostUIArray: FieldType[] = [
   {
     label: "Name",
@@ -12,17 +13,55 @@ const PostUIArray: FieldType[] = [
   },
 ];
 
+const PostUITextareaArray: FieldType[] = [
+  {
+    name: "description",
+    label: "Description",
+    isCompulsory: "Compulsory",
+  },
+];
+
+const PostFileUploadUIArray: FieldType[] = [
+  {
+    name: "images",
+    label: "Images",
+    isCompulsory: "Compulsory",
+  },
+];
+
 const { type, label, btnSvgIcon, color }: ButtonType = {
   label: "Submit",
   btnSvgIcon: "fa fa-paper-plane",
   color: "bg-black",
 };
 
+export const ValidationSchema = Yup.object({
+  name: Yup.string().required("Email is required"),
+  description: Yup.string().required("Description is required"),
+  images: Yup.mixed().test(
+    "count",
+    "select atleast one file",
+    (files) => files.length > 0
+  ),
+  // .test("type", "select valid image files", (files) => {
+  //   for (let image of files) {
+  //     if (!image.type.startsWith("image")) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }),
+});
+
 const Edit = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
+      description: "",
+      images: [],
     },
+    validationSchema: ValidationSchema,
+
     onSubmit: (values, { setSubmitting }) => {
       console.log(values);
     },
@@ -35,6 +74,8 @@ const Edit = () => {
         title="Edit Post"
         formik={formik}
         UITextArray={PostUIArray}
+        UITextAreaArray={PostUITextareaArray}
+        fileUploadUIInformation={PostFileUploadUIArray}
         btnType={type}
         btnLabel={label}
         btnSvgIcon={btnSvgIcon}

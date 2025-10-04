@@ -2,8 +2,6 @@ import type { FormikProps } from "formik";
 import type { categoryFormValues } from "../Pages/Category/Add";
 import type { PostFormValues } from "../Pages/Post/Add";
 
-import type { LoginFormValues } from "../Pages/auth/Login";
-
 import type { RegisterFormValues } from "../Pages/auth/Register";
 
 import SubmitButton from "./SubmitButton";
@@ -29,11 +27,7 @@ const Form = ({
   UITextArray?: FieldType[];
   UITextAreaArray?: FieldType[];
   btnLabel?: string;
-  formik:
-    | FormikProps<LoginFormValues>
-    | FormikProps<RegisterFormValues>
-    | FormikProps<categoryFormValues>
-    | FormikProps<PostFormValues>;
+  formik: any;
   btnType?: string;
   btnSvgIcon: string;
   color?: string;
