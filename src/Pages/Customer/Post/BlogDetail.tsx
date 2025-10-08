@@ -6,10 +6,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import { Expand } from "lucide-react";
+
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
 import { type CarouselApi } from "@/components/ui/carousel";
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const BlogDetail = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -121,10 +126,29 @@ const BlogDetail = () => {
                 <CarouselPrevious className="left-4" />
                 <CarouselNext className="right-4" />
               </Carousel>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute bottom-4 right-4 bg-background/80 backdrop-blur-sm"
+                  >
+                    <Expand className="h-4 w-4" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="p-0">
+                  <img
+                    src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcR5U16C8yXgBpl7-Bc7Itjx3_LRl425zINA&s`}
+                    alt={`Expanded view of product`}
+                    className="w-full h-full object-contain"
+                  />
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Scroll area Thumbnail Part */}
-            <ScrollArea className="order-2 md:order-1 w-full md:w-24 h-24 md:h-[460px]">
+            <ScrollArea className="order-2 md:order-1 w-full md:w-24 h-24 md:h-[460px] -z-2">
               <div className="flex md:flex-col gap-2 p-1">
                 <button
                   key={0}

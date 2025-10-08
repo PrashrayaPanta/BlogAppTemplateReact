@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { useSelector } from "react-redux";
+
 const Header = () => {
   const user = useSelector((state) => state.user.value);
 
@@ -69,12 +70,17 @@ const Header = () => {
         </div>
 
         {user ? (
-          <a href="/dashboard">{user?.username}</a>
+          <>
+            <a href="/dashboard">{user?.username}</a>
+            <a href="/logout">Logout</a>
+          </>
         ) : (
-          <a href="/login">Login</a>
+          <>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+          </>
         )}
 
-        <a href="/register">Register</a>
         <a href="/categories">Category</a>
 
         <a href="/posts">Post</a>

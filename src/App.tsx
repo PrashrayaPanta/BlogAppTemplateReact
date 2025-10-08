@@ -7,6 +7,7 @@ import CategoriesProduct from "./Pages/Customer/Categories/CategoriesProduct";
 
 import * as Pages from "./Pages";
 import Dashboard from "./Pages/Dashboard";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   return (
@@ -19,30 +20,54 @@ function App() {
             <Route path="/register" element={<Pages.Auth.Register />} />
             <Route path="/login" element={<Pages.Auth.Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile/edit" element={<Pages.Profile.Edit />} />
+            <Route
+              path="/profile/edit"
+              element={<PrivateRoute element={<Pages.Profile.Edit />} />}
+            />
             <Route
               path="/profile/change-password"
-              element={<Pages.Profile.ChangePassword />}
+              element={
+                <PrivateRoute element={<Pages.Profile.ChangePassword />} />
+              }
             />
-            <Route path="/categories/:id" element={<CategoriesProduct />} />
+            <Route
+              path="/categories/:slug"
+              element={<Pages.Customer.Categories.CategoriesProduct />}
+            />
             {/* Admin */}
             {/* Categories */}
             <Route
               path="/categories"
-              element={<Pages.Admin.Categories.List />}
+              element={
+                <PrivateRoute element={<Pages.Admin.Categories.List />} />
+              }
             />
             <Route
               path="/categories/edit"
-              element={<Pages.Admin.Categories.Edit />}
+              element={
+                <PrivateRoute element={<Pages.Admin.Categories.Edit />} />
+              }
             />
             <Route
               path="/categories/add"
-              element={<Pages.Admin.Categories.Create />}
+              element={
+                <PrivateRoute element={<Pages.Admin.Categories.Create />} />
+              }
             />
             {/* Post */}
-            <Route path="/posts" element={<Pages.Admin.Post.List />} />
-            <Route path="/posts/edit" element={<Pages.Admin.Post.Edit />} />\
-            <Route path="/posts/add" element={<Pages.Admin.Post.Create />} />
+            <Route
+              path="/posts"
+              element={<PrivateRoute element={<Pages.Admin.Post.List />} />}
+            />
+
+            <Route
+              path="/posts/edit"
+              element={<PrivateRoute element={<Pages.Admin.Post.Edit />} />}
+            />
+            <Route
+              path="/posts/add"
+              element={<PrivateRoute element={<Pages.Admin.Post.Create />} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

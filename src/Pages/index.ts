@@ -6,4 +6,6 @@ import * as Profile from "./Profile";
 
 import * as Dashboard from "./Dashboard";
 
-export { Admin, Auth, Profile, Dashboard };
+import * as Customer from "./Customer";
+
+export { Admin, Auth, Profile, Dashboard, Customer };
